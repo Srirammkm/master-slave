@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+
+message ApplicationUsage {
+    string app = 1;
+    int32 lapsed = 2;
+}
+
+
+message StreamLogRequest {
+    string date = 1;
+    string start_time = 2;
+    string app = 3;
+    int32 lapsed = 4;
+    string agent_last_online = 5;
+    string user_last_online = 6;
+    string username = 7;
+    string orgid = 8;
+    string alias = 9;
+}
+
+message StreamLogResponse {
+    bool status = 1;
+    string message = 2;
+}
+
+message InitLogRequest {
+    string date = 1;
+    string start_time = 2;
+    string os_platform = 3;
+    string os_version = 4;
+    string username = 5;
+    string orgid = 6;
+}
+
+message InitLogResponse {
+    bool status = 1;
+    string message = 2;
+}
+
+service StreamLogService {
+    rpc InitLogData (InitLogRequest) returns (InitLogResponse);
+    rpc StreamLogData (stream StreamLogRequest) returns (StreamLogResponse);
+}
+
+
