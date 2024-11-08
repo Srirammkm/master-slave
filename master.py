@@ -13,7 +13,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # MongoDB setup
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb://localhost:27017")
 
 
 class StreamLogServicer(streamer_pb2_grpc.StreamLogServiceServicer):
@@ -70,7 +70,7 @@ class StreamLogServicer(streamer_pb2_grpc.StreamLogServiceServicer):
                 "$set": {
                     "agent_last_online": agent_last_online,
                     "user_last_online": user_last_online,
-                    f"application_usage.{start_time}.{app_name}.alias": alias
+                    f"application_usage.{start_time}.{app_name}.window": alias
                 },
                 "$inc": {
                     f"application_usage.{start_time}.{app_name}.lapsed_time": lapsed_time

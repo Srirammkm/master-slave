@@ -1,0 +1,3 @@
+SPECTRAWATCH_ENDPOINT = "192.168.1.3" # "localhost"
+SPECTRAWATCH_PORT = "50051"
+ORG_ID = "mummyorg"
